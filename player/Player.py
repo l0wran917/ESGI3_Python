@@ -36,3 +36,6 @@ class Player:
             self.movement[1] = 0
             self.jump = 0
             self.isJumping = False
+
+        self.posPlayer = self.posPlayer.move(self.movement[0], self.movement[1] - self.jump)
+        self.movement = [0, 0]

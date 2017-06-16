@@ -19,7 +19,7 @@ def main():
 
         player.move()
 
-        world.display()
+        world.display(window)
         player.display(window)
 
         pygame.display.flip()
