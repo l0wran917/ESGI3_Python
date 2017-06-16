@@ -7,7 +7,7 @@ from player.Player import Player
 def main():
     pygame.init()
 
-    window = pygame.display.set_mode((640, 480))
+    window = pygame.display.set_mode((800, 445))
     world = World(window)
     player = Player(window)
 
@@ -18,6 +18,7 @@ def main():
                 isRunning = False
 
         player.move()
+        world.scroll(player)
 
         world.display(window)
         player.display(window)
