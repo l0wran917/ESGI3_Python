@@ -17,7 +17,7 @@ def main():
             if event.type == QUIT:
                 isRunning = False
 
-        player.move()
+        player.move(world)
         world.scroll(player)
 
         world.display(window)
