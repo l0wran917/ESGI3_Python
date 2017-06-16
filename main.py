@@ -8,8 +8,8 @@ def main():
     pygame.init()
 
     window = pygame.display.set_mode((800, 445))
-    world = World(window)
-    player = Player(window)
+    world = World()
+    player = Player()
 
     isRunning = True
     while isRunning:

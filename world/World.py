@@ -3,7 +3,7 @@ from pygame.math import Vector2
 
 
 class World:
-    def __init__(self, window):
+    def __init__(self,):
         self.background = pygame.image.load("world/assets/background.png").convert()
         self.position = Vector2()
 

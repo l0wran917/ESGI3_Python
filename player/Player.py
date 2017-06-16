@@ -6,7 +6,7 @@ from pygame.math import Vector2
 class Player:
     jumpHeight = 60
 
-    def __init__(self, window):
+    def __init__(self):
         self.image = pygame.image.load("player/assets/perso.png").convert_alpha()
         self.position = self.image.get_rect()
         self.position.x = 100
