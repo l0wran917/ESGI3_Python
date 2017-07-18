@@ -9,9 +9,9 @@ class World:
         self.position = Vector2()
 
         self.plateforms = []
-        for i in range(0, 10):
-            self.plateforms.append(Plateform((47 * i) + (47 * 2), 360))
-        self.plateforms.append(Plateform(47*6, 360-90))
+        for i in range(0, 15):
+            self.plateforms.append(Plateform((47 * i), 360))
+        self.plateforms.append(Plateform(47*12, 360-90))
 
     def display(self, window):
         window.blit(self.background, self.position)
@@ -19,10 +19,9 @@ class World:
             plateform.display(window)
 
     def scroll(self, player):
-        if player.position.x >= (self.get_right_scroll_limit() - player.speed):
-            self.position.x -= player.speed * 0
-        elif player.position.x < (self.get_left_scroll_limit() + player.speed):
-            self.position.x += player.speed * 0
+        self.position.x += player.speed * -player.scrollArea
+        for plateform in self.plateforms:
+            plateform.position.x += player.speed * -player.scrollArea
 
     def get_right_scroll_limit(self):
         return 280
