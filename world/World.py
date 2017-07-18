@@ -9,8 +9,9 @@ class World:
         self.position = Vector2()
 
         self.plateforms = []
-        for i in range(0, 17):
-            self.plateforms.append(Plateform(47 * i, 360))
+        for i in range(0, 10):
+            self.plateforms.append(Plateform((47 * i) + (47 * 2), 360))
+        self.plateforms.append(Plateform(47*6, 360-90))
 
     def display(self, window):
         window.blit(self.background, self.position)
