@@ -1,7 +1,6 @@
 import pygame
 from pygame.locals import *
 from world.World import World
-from world.Plateform import Plateform
 from player.Player import Player
 
 
@@ -11,23 +10,22 @@ def main():
     window = pygame.display.set_mode((800, 445))
     world = World()
     player = Player()
-    plateform = Plateform()
 
-    isRunning = True
-    while isRunning:
+    is_running = True
+    while is_running:
         for event in pygame.event.get():
             if event.type == QUIT:
-                isRunning = False
+                is_running = False
 
         player.move(world)
         world.scroll(player)
 
         world.display(window)
-        plateform.display(window)
         player.display(window)
 
         pygame.display.flip()
         pygame.time.Clock().tick(60)
+
 
 if __name__ == '__main__':
     main()

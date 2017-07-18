@@ -1,5 +1,6 @@
 import pygame
 from pygame.math import Vector2
+from world.Plateform import Plateform
 
 
 class World:
@@ -7,18 +8,23 @@ class World:
         self.background = pygame.image.load("world/assets/background.png").convert()
         self.position = Vector2()
 
+        self.plateforms = []
+        for i in range(0, 17):
+            self.plateforms.append(Plateform(47 * i, 360))
+
     def display(self, window):
-        window.blit(self.background, (self.position[0], self.position[1]))
+        window.blit(self.background, self.position)
+        for plateform in self.plateforms:
+            plateform.display(window)
 
     def scroll(self, player):
+        if player.position.x >= (self.get_right_scroll_limit() - player.speed):
+            self.position.x -= player.speed * 0
+        elif player.position.x < (self.get_left_scroll_limit() + player.speed):
+            self.position.x += player.speed * 0
 
-        if player.position[0] >= (self.getRightScrollLimit() - player.speed):
-            self.position[0] -= player.speed
-        elif player.position[0] < (self.getLeftScrollLimit() + player.speed):
-            self.position[0] += player.speed
-
-    def getRightScrollLimit(self):
+    def get_right_scroll_limit(self):
         return 280
 
-    def getLeftScrollLimit(self):
+    def get_left_scroll_limit(self):
         return 50

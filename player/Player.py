@@ -34,17 +34,18 @@ class Player:
         if self.isJumping:
             self.jump -= self.gravity
 
-        if self.position.y + self.movement.y <= 480 - self.position.height:
-            self.movement.y = self.gravity
+        self.movement.y = self.gravity
 
-        if self.position.y + self.movement.y - self.jump >= 375 - self.position.height:
-            self.movement.y = 0
-            self.jump = 0
-            self.isJumping = False
+        for plateform in world.plateforms:
+            if self.position.y + self.movement.y - self.jump + self.position.height > plateform.position.y:
+                if self.position.x + self.position.width > plateform.position.x and self.position.x < plateform.position.x + plateform.size.x:
+                    self.movement.y = 0
+                    self.jump = 0
+                    self.isJumping = False
 
-        if (self.position.x + self.movement.x > world.getRightScrollLimit()) or (
-                self.position.x + self.movement.x < world.getLeftScrollLimit()):
-            self.movement.x = 0
+        if (self.position.x + self.movement.x > world.get_right_scroll_limit()) or (
+                        self.position.x + self.movement.x < world.getLeftScrollLimit()):
+            self.movement.x = self.movement.x
 
         self.position.x = self.position.x + self.movement.x
         self.position.y = self.position.y + self.movement.y - self.jump
