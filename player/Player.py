@@ -4,7 +4,7 @@ from pygame.math import Vector2
 
 
 class Player:
-    jumpHeight = 60
+    jumpHeight = 70
 
     def __init__(self):
         self.image = pygame.image.load("player/assets/perso.png").convert_alpha()
@@ -13,7 +13,7 @@ class Player:
         self.position.y = 100
 
         self.speed = 13
-        self.gravity = 5
+        self.gravity = 9
         self.movement = Vector2()
         self.jump = 0
         self.isJumping = False
@@ -34,7 +34,7 @@ class Player:
         if self.isJumping:
             self.jump -= self.gravity
 
-        self.movement.y += self.gravity
+        self.movement.y = self.gravity
         if self.jump > 0:
             self.movement.y -= self.jump
 
@@ -46,7 +46,6 @@ class Player:
                     self.movement.y = 0
                     self.isJumping = False
 
-        for plateform in world.plateforms:
             if self.position.y + self.position.height > plateform.position.y and \
                             self.position.y < plateform.position.y + plateform.size.y:
                 if self.position.x + self.position.width + self.movement.x > plateform.position.x and \
