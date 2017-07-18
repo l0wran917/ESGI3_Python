@@ -1,6 +1,7 @@
 import pygame
 from pygame.locals import *
 from world.World import World
+from world.Plateform import Plateform
 from player.Player import Player
 
 
@@ -8,8 +9,9 @@ def main():
     pygame.init()
 
     window = pygame.display.set_mode((800, 445))
-    world = World()
-    player = Player()
+    world = World(window)
+    player = Player(window)
+    plateform = Plateform()
 
     isRunning = True
     while isRunning:
@@ -21,6 +23,7 @@ def main():
         world.scroll(player)
 
         world.display(window)
+        plateform.display(window)
         player.display(window)
 
         pygame.display.flip()
