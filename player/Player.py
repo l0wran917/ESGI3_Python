@@ -34,6 +34,7 @@ class Player:
 
         if self.isJumping:
             self.jump -= self.gravity
+            print('jump')
 
         self.movement.y = self.gravity
         if self.jump > 0:
@@ -45,6 +46,7 @@ class Player:
                 if self.position.y + self.position.height + self.movement.y > plateform.position.y and \
                                         self.position.y + self.movement.y < plateform.position.y + plateform.size.y:
                     self.movement.y = 0
+                    self.jump = 0
                     self.isJumping = False
 
             if self.position.y + self.position.height > plateform.position.y and \
@@ -60,6 +62,8 @@ class Player:
         if self.position.x + self.movement.x < world.get_left_scroll_limit():
             self.movement.x = 0
             self.scrollArea = -1
+
+        print(self.movement)
 
         self.position.x = self.position.x + self.movement.x
         self.position.y = self.position.y + self.movement.y
