@@ -18,6 +18,8 @@ class Player:
         self.jumpValue = 0
         self.is_jumping = False
 
+        self.dead = False
+
     def display(self, window):
         window.blit(self.image, self.position)
 
@@ -62,4 +64,4 @@ class Player:
         self.movement = Vector2()
 
     def kill(self):
-        print('You died')
+        self.dead = True

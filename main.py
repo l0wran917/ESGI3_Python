@@ -2,7 +2,7 @@ import pygame
 from pygame.locals import *
 from world.World import World
 from player.Player import Player
-
+from hud.Hud import Hud
 
 def main():
     pygame.init()
@@ -10,6 +10,8 @@ def main():
     window = pygame.display.set_mode((800, 445))
     world = World()
     player = Player()
+
+    hud = Hud()
 
     is_running = True
     while is_running:
@@ -27,6 +29,11 @@ def main():
 
         world.display(window)
         player.display(window)
+        hud.display(window, player)
+
+        if player.dead:
+            is_running = False
+            print('You died')
 
         pygame.display.flip()
         pygame.time.Clock().tick(60)
