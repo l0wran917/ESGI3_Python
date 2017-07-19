@@ -10,8 +10,8 @@ class World:
 
         self.plateforms = []
         for i in range(0, 15):
-            self.plateforms.append(Plateform((47 * i), 360))
-        self.plateforms.append(Plateform(47*12, 360-90))
+            self.plateforms.append(Plateform((32 * i), 360))
+        self.plateforms.append(Plateform(32 * 12, 230))
 
     def display(self, window):
         window.blit(self.background, self.position)
@@ -19,6 +19,9 @@ class World:
             plateform.display(window)
 
     def scroll(self, player):
+        if self.position.x + (player.speed * -player.scrollArea) > 0:
+            return False
+
         self.position.x += player.speed * -player.scrollArea
         for plateform in self.plateforms:
             plateform.position.x += player.speed * -player.scrollArea
