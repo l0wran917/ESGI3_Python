@@ -14,7 +14,7 @@ class World:
             self.plateforms.append(Plateform((32 * i), 360))
         self.plateforms.append(Plateform(32 * 12, 230))
 
-        self.enemy = Enemy(665, 300)
+        self.enemy = Enemy(660, 300)
 
     def display(self, window):
         window.blit(self.background, self.position)
@@ -50,7 +50,7 @@ class World:
                                     player.position.y + player.movement.y < enemy.position.y + enemy.size.y:  # Test Y
                 if enemy.position.y - (player.position.y + player.position.height) >= 0:  # Player come from upside
                     enemy.kill()
-                    player.jump = 20
+                    player.jump(40)
                 else:
                     player.kill()
 
