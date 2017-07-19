@@ -6,4 +6,4 @@ class Hud:
         print('hud')
 
     def display(self, window, player):
-        print('ok')
+        test = 1

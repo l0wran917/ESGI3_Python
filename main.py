@@ -4,6 +4,7 @@ from world.World import World
 from player.Player import Player
 from hud.Hud import Hud
 
+
 def main():
     pygame.init()
 
@@ -20,12 +21,13 @@ def main():
                 is_running = False
 
         player.move(world)
+        world.move()
 
         world.checkEnemies(player)
-
         world.scroll(player)
 
         player.applyMove()
+        world.applyMove()
 
         world.display(window)
         player.display(window)
