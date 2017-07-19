@@ -21,6 +21,7 @@ def main():
         world.scroll(player)
 
         world.display(window)
+        player.applyMove()
         player.display(window)
 
         pygame.display.flip()

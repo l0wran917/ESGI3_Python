@@ -9,7 +9,7 @@ class World:
         self.position = Vector2()
 
         self.plateforms = []
-        for i in range(0, 15):
+        for i in range(0, 50):
             self.plateforms.append(Plateform((32 * i), 360))
         self.plateforms.append(Plateform(32 * 12, 230))
 
@@ -19,12 +19,20 @@ class World:
             plateform.display(window)
 
     def scroll(self, player):
-        if self.position.x + (player.speed * -player.scrollArea) > 0:
+        scroll_area = 0
+        if player.position.x + player.movement.x > self.get_right_scroll_limit():
+            player.movement.x = 0
+            scroll_area = 1
+        if player.position.x + player.movement.x < self.get_left_scroll_limit():
+            player.movement.x = 0
+            scroll_area = -1
+
+        if self.position.x + (player.speed * -scroll_area) > 0:
             return False
 
-        self.position.x += player.speed * -player.scrollArea
+        self.position.x += player.speed * -scroll_area
         for plateform in self.plateforms:
-            plateform.position.x += player.speed * -player.scrollArea
+            plateform.position.x += player.speed * -scroll_area
 
     def get_right_scroll_limit(self):
         return 280
