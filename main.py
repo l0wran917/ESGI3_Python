@@ -18,10 +18,14 @@ def main():
                 is_running = False
 
         player.move(world)
+
+        world.checkEnemies(player)
+
         world.scroll(player)
 
-        world.display(window)
         player.applyMove()
+
+        world.display(window)
         player.display(window)
 
         pygame.display.flip()

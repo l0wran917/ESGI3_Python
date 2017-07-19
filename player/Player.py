@@ -4,7 +4,7 @@ from pygame.math import Vector2
 
 
 class Player:
-    jumpHeight = 70
+    jumpHeight = 80
 
     def __init__(self):
         self.image = pygame.image.load("player/assets/perso.png").convert_alpha()
@@ -12,8 +12,8 @@ class Player:
         self.position.x = 150
         self.position.y = 100
 
-        self.speed = 13
-        self.gravity = 9
+        self.speed = 11
+        self.gravity = 10
         self.movement = Vector2()
         self.jump = 0
         self.is_jumping = False
@@ -58,3 +58,6 @@ class Player:
         self.position.y = self.position.y + self.movement.y
 
         self.movement = Vector2()
+
+    def kill(self):
+        print('You died')
