@@ -30,8 +30,6 @@ class Player:
         if pressed[K_SPACE] and not self.is_jumping:
             self.jump(self.jumpHeight)
 
-        print(self.jumpValue)
-
         if self.is_jumping:
             self.jumpValue -= self.gravity
 
