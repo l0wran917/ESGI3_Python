@@ -9,10 +9,8 @@ class World:
         self.background = pygame.image.load("world/assets/background.png").convert()
         self.position = Vector2()
 
-        self.plateforms = []
-        for i in range(0, 50):
-            self.plateforms.append(Plateform((32 * i), 360))
-        self.plateforms.append(Plateform(32 * 12, 230))
+        self.plateform = Plateform(1, 1)
+        self.plateforms = self.plateform.create()
 
         self.enemies = []
         for i in range(0, 2):
