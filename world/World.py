@@ -6,6 +6,7 @@ from world.Enemy import Enemy
 class World:
     def __init__(self):
         self.background = pygame.image.load("world/assets/background.png").convert()
+        self.background = pygame.transform.scale(self.background, (800, 445))
         self.position = Vector2()
 
         self.plateform = Plateform(1, 1)
@@ -53,8 +54,6 @@ class World:
                     if enemy.position.y - (player.position.y + player.position.height) >= 0:  # Player come from upside
                         enemy.kill()
                         hud.updateScore(window, player)
-                        monsterkill = pygame.mixer.Sound('monsterkill.mp3')
-                        monsterkill.play()
                         player.jump(40)
                     else:
                         player.kill()

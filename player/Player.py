@@ -6,7 +6,9 @@ class Player:
     jumpHeight = 50
 
     def __init__(self):
-        self.image = pygame.image.load("player/assets/koala2.png").convert_alpha()
+        self.image = pygame.image.load("player/assets/perso.png").convert_alpha()
+        self.image = pygame.transform.scale(self.image, (50, 43))
+        self.image = pygame.transform.flip(self.image, 90, 0)
         self.position = self.image.get_rect()
         self.position.x = 150
         self.position.y = 100

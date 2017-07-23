@@ -4,7 +4,9 @@ from pygame.math import Vector2
 
 class Enemy:
     def __init__(self, x, y):
-        self.background = pygame.image.load("world/assets/enemy.png").convert()
+        self.background = pygame.image.load("world/assets/enemy.png").convert_alpha()
+        self.background = pygame.transform.scale(self.background, (40, 47))
+        self.background = pygame.transform.flip(self.background, 90, 0)
         self.position = Vector2()
         self.size = Vector2()
 
