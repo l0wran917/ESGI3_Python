@@ -14,3 +14,6 @@ class Hud:
     def updateScore(self, window, player):
         self.score += 1
         self.display(window, player)
+
+    def restart(self):
+        self.score = 0

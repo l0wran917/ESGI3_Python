@@ -36,7 +36,6 @@ def main():
             world.scroll(player)
 
             player.applyMove()
-            world.applyMove()
 
             world.display(window)
             player.display(window)
@@ -55,6 +54,7 @@ def main():
                     if event.type == KEYDOWN and event.key == K_r:
                         world.restart()
                         player.restart()
+                        hud.restart()
                         pygame.mixer.music.load('bestsongever.mp3')
                         pygame.mixer.music.play(-1)
                         waiting_input = False

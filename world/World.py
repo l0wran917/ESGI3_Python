@@ -66,9 +66,6 @@ class World:
         for enemy in self.enemies:
             enemy.move()
 
-    def applyMove(self):
-        test = 1
-
     def restart(self):
         self.__init__()
 
