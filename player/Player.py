@@ -67,6 +67,9 @@ class Player:
         self.is_jumping = True
 
     def applyMove(self):
+        if self.position.y > 420:
+            self.kill()
+
         self.position.x = self.position.x + self.movement.x
         self.position.y = self.position.y + self.movement.y
 
