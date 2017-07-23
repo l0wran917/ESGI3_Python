@@ -1,4 +1,5 @@
 import pygame
+import time
 from pygame.locals import *
 from world.World import World
 from player.Player import Player
@@ -14,6 +15,10 @@ def main():
 
     hud = Hud()
 
+    pygame.mixer.pre_init(44100, -16, 2, 2048)
+    pygame.mixer.music.load('bestsongever.mp3')
+    pygame.mixer.music.play(-1)
+
     is_running = True
     while is_running:
         for event in pygame.event.get():
@@ -23,7 +28,7 @@ def main():
         player.move(world)
         world.move()
 
-        world.checkEnemies(player)
+        world.checkEnemies(player, window, hud)
         world.scroll(player)
 
         player.applyMove()

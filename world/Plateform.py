@@ -4,7 +4,9 @@ from random import randint
 
 class Plateform:
     def __init__(self, x, y):
-        self.background = pygame.image.load("world/assets/plateform_ground.jpg").convert()
+        self.background = pygame.image.load("world/assets/plateform_ground.png").convert_alpha()
+        self.background = pygame.transform.scale(self.background, (35, 50))
+
         self.startedPlateform = 10
         self.position = Vector2()
         self.size = Vector2()

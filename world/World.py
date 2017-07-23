@@ -3,16 +3,17 @@ from pygame.math import Vector2
 from world.Plateform import Plateform
 from world.Enemy import Enemy
 
-
 class World:
     def __init__(self):
         self.background = pygame.image.load("world/assets/background.png").convert()
+        self.background = pygame.transform.scale(self.background, (800, 445))
         self.position = Vector2()
 
         self.plateform = Plateform(1, 1)
         self.plateforms = self.plateform.create()
 
         self.enemies = []
+
         for i in range(0, 2):
             self.enemies.append(Enemy(660 + i * 70, 300))
 
@@ -41,7 +42,7 @@ class World:
         for enemy in self.enemies:
             enemy.position.x += player.speed * -scroll_area
 
-    def checkEnemies(self, player):
+    def checkEnemies(self, player, window, hud):
         for enemy in self.enemies:
             if enemy.dead:
                 continue
@@ -52,6 +53,7 @@ class World:
                                         player.position.y + player.movement.y < enemy.position.y + enemy.size.y:  # Test Y
                     if enemy.position.y - (player.position.y + player.position.height) >= 0:  # Player come from upside
                         enemy.kill()
+                        hud.updateScore(window, player)
                         player.jump(40)
                     else:
                         player.kill()
