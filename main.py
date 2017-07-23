@@ -1,5 +1,4 @@
 import pygame
-import time
 from pygame.locals import *
 from world.World import World
 from player.Player import Player
