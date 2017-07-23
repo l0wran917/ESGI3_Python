@@ -44,6 +44,9 @@ def main():
         else:
             if not waiting_input:
                 window.blit(backgroundDead, (0, 0))
+                pygame.mixer.music.stop()
+                pygame.mixer.music.load('monsterkill.mp3')
+                pygame.mixer.music.play()
                 waiting_input = True
             else:
                 for event in pygame.event.get():
@@ -52,6 +55,8 @@ def main():
                     if event.type == KEYDOWN and event.key == K_r:
                         world.restart()
                         player.restart()
+                        pygame.mixer.music.load('bestsongever.mp3')
+                        pygame.mixer.music.play(-1)
                         waiting_input = False
 
         pygame.display.flip()
