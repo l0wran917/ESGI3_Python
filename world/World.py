@@ -3,6 +3,7 @@ from pygame.math import Vector2
 from world.Plateform import Plateform
 from world.Enemy import Enemy
 
+
 class World:
     def __init__(self):
         self.background = pygame.image.load("world/assets/background.png").convert()
@@ -18,7 +19,12 @@ class World:
             self.enemies.append(Enemy(660 + i * 70, 300))
 
     def display(self, window):
-        window.blit(self.background, self.position)
+        position = self.position
+        if position.x < -800:
+            position.x = position.x + 800
+
+        window.blit(self.background, position)
+        window.blit(self.background, (position.x + 800, position.y))
         for plateform in self.plateforms:
             plateform.display(window)
         for enemy in self.enemies:
