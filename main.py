@@ -44,10 +44,8 @@ def main():
         else:
             if not waiting_input:
                 window.blit(backgroundDead, (0, 0))
-                print('display')
                 waiting_input = True
             else:
-                print('ok')
                 for event in pygame.event.get():
                     if event.type == QUIT:
                         is_running = False
