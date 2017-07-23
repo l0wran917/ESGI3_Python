@@ -77,3 +77,8 @@ class Player:
 
     def kill(self):
         self.dead = True
+
+    def restart(self):
+        self.dead = False
+        self.position.x = 150
+        self.position.y = 100

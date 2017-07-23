@@ -71,6 +71,9 @@ class World:
     def applyMove(self):
         test = 1
 
+    def restart(self):
+        self.__init__()
+
     def get_right_scroll_limit(self):
         return 280
 

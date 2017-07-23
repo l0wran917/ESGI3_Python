@@ -18,28 +18,43 @@ def main():
     pygame.mixer.music.load('bestsongever.mp3')
     pygame.mixer.music.play(-1)
 
+    backgroundDead = pygame.image.load("world/assets/dead_screen.png").convert_alpha()
+    backgroundDead = pygame.transform.scale(backgroundDead, (800, 445))
+    waiting_input = False
+
     is_running = True
     while is_running:
-        for event in pygame.event.get():
-            if event.type == QUIT:
-                is_running = False
+        if not player.dead:
+            for event in pygame.event.get():
+                if event.type == QUIT:
+                    is_running = False
 
-        player.move(world)
-        world.move()
+            player.move(world)
+            world.move()
 
-        world.checkEnemies(player, window, hud)
-        world.scroll(player)
+            world.checkEnemies(player, window, hud)
+            world.scroll(player)
 
-        player.applyMove()
-        world.applyMove()
+            player.applyMove()
+            world.applyMove()
 
-        world.display(window)
-        player.display(window)
-        hud.display(window, player)
-
-        if player.dead:
-            is_running = False
-            print('You died')
+            world.display(window)
+            player.display(window)
+            hud.display(window, player)
+        else:
+            if not waiting_input:
+                window.blit(backgroundDead, (0, 0))
+                print('display')
+                waiting_input = True
+            else:
+                print('ok')
+                for event in pygame.event.get():
+                    if event.type == QUIT:
+                        is_running = False
+                    if event.type == KEYDOWN and event.key == K_r:
+                        world.restart()
+                        player.restart()
+                        waiting_input = False
 
         pygame.display.flip()
         pygame.time.Clock().tick(60)
