@@ -4,8 +4,8 @@ from random import randint
 
 class Plateform:
     def __init__(self, x, y):
-        self.background = pygame.image.load("world/assets/plateform_ground.jpg").convert_alpha()
-        self.background = pygame.transform.scale(self.background, (35, 50))
+        self.background = pygame.image.load("world/assets/plateform_ground.png").convert_alpha()
+        self.background = pygame.transform.scale(self.background, (50, 50))
 
         self.startedPlateform = 10
         self.position = Vector2()
@@ -42,11 +42,11 @@ class Plateform:
     def blank(self, i):
         random = randint(0, 20)
         if random > 17:
-            self.plateform.append(Plateform(32 * i, 500))
+            self.plateform.append(Plateform(75 * i, 500))
             randomDobleBlank = i + randint(0, 1)
-            self.plateform.append(Plateform((32 * randomDobleBlank), 500))
+            self.plateform.append(Plateform((75 * randomDobleBlank), 500))
         else:
-            self.plateform.append(Plateform(32 * i, 360))
+            self.plateform.append(Plateform(75 * i, 360))
 
     def jump(self, i):
         random = randint(0, 20)
