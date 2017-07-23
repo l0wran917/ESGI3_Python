@@ -22,7 +22,13 @@ class Player:
         self.dead = False
 
     def display(self, window):
-        window.blit(self.image, self.position)
+        if self.is_jumping:
+            self.image = pygame.image.load("player/assets/jump.png").convert_alpha()
+            self.image = pygame.transform.scale(self.image, (50, 43))
+            self.image = pygame.transform.flip(self.image, 90, 0)
+            window.blit(self.image, self.position)
+        else:
+            window.blit(self.image, self.position)
 
     def move(self, world):
         pressed = pygame.key.get_pressed()
