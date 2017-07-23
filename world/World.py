@@ -64,7 +64,7 @@ class World:
 
     def move(self):
         for enemy in self.enemies:
-            enemy.position.x += 1
+            enemy.move()
 
     def applyMove(self):
         test = 1
