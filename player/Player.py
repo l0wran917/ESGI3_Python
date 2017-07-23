@@ -9,6 +9,11 @@ class Player:
         self.image = pygame.image.load("player/assets/perso.png").convert_alpha()
         self.image = pygame.transform.scale(self.image, (50, 43))
         self.image = pygame.transform.flip(self.image, 90, 0)
+
+        self.imageJump = pygame.image.load("player/assets/jump.png").convert_alpha()
+        self.imageJump = pygame.transform.scale(self.image, (50, 43))
+        self.imageJump = pygame.transform.flip(self.image, 90, 0)
+
         self.position = self.image.get_rect()
         self.position.x = 150
         self.position.y = 100
@@ -23,10 +28,7 @@ class Player:
 
     def display(self, window):
         if self.is_jumping:
-            self.image = pygame.image.load("player/assets/jump.png").convert_alpha()
-            self.image = pygame.transform.scale(self.image, (50, 43))
-            self.image = pygame.transform.flip(self.image, 90, 0)
-            window.blit(self.image, self.position)
+            window.blit(self.imageJump, self.position)
         else:
             window.blit(self.image, self.position)
 
