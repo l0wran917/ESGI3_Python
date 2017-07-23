@@ -13,10 +13,8 @@ class World:
         self.plateform = Plateform(1, 1)
         self.plateforms = self.plateform.create()
 
-        self.enemies = []
-
-        for i in range(0, 2):
-            self.enemies.append(Enemy(660 + i * 70, 300))
+        self.enemie = Enemy()
+        self.enemies = self.enemie.create(20)
 
     def display(self, window):
         position = self.position
