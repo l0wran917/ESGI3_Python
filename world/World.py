@@ -18,11 +18,11 @@ class World:
 
     def display(self, window):
         position = self.position
-        if position.x < -800:
-            position.x = position.x + 800
+        if position.x < -pygame.display.get_surface().get_rect().width:
+            position.x = position.x + pygame.display.get_surface().get_rect().width
 
         window.blit(self.background, position)
-        window.blit(self.background, (position.x + 800, position.y))
+        window.blit(self.background, (position.x + pygame.display.get_surface().get_rect().width, position.y))
         for plateform in self.plateforms:
             plateform.display(window)
         for enemy in self.enemies:
