@@ -46,18 +46,18 @@ class World:
         for enemy in self.enemies:
             enemy.position.x += player.speed * -scroll_area
 
-    def checkEnemies(self, player, window, hud):
+    def check_enemies(self, player, window, hud):
         for enemy in self.enemies:
             if enemy.dead:
                 continue
 
-            if player.position.x + player.position.width + player.movement.x > enemy.position.x and player.position.x + \
-                    player.movement.x < enemy.position.x + enemy.size.x:  # Test X
+            if player.position.x + player.position.width + player.movement.x > enemy.position.x and player.position.x \
+                    + player.movement.x < enemy.position.x + enemy.size.x:  # X
                 if player.position.y + player.position.height + player.movement.y > enemy.position.y and \
-                                        player.position.y + player.movement.y < enemy.position.y + enemy.size.y:  # Test Y
+                                        player.position.y + player.movement.y < enemy.position.y + enemy.size.y:  # Y
                     if enemy.position.y - (player.position.y + player.position.height) >= 0:  # Player come from upside
                         enemy.kill()
-                        hud.updateScore(window, player)
+                        hud.update_score(window)
                         player.jump(40)
                     else:
                         player.kill()

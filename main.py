@@ -18,8 +18,8 @@ def main():
     pygame.mixer.music.load('bestsongever.mp3')
     pygame.mixer.music.play(-1)
 
-    backgroundDead = pygame.image.load("world/assets/dead_screen.png").convert_alpha()
-    backgroundDead = pygame.transform.scale(backgroundDead, (800, 445))
+    background_dead = pygame.image.load("world/assets/dead_screen.png").convert_alpha()
+    background_dead = pygame.transform.scale(background_dead, (800, 445))
     waiting_input = False
 
     is_running = True
@@ -32,17 +32,17 @@ def main():
             player.move(world)
             world.move()
 
-            world.checkEnemies(player, window, hud)
+            world.check_enemies(player, window, hud)
             world.scroll(player)
 
-            player.applyMove()
+            player.apply_move()
 
             world.display(window)
             player.display(window)
-            hud.display(window, player)
+            hud.display(window)
         else:
             if not waiting_input:
-                window.blit(backgroundDead, (0, 0))
+                window.blit(background_dead, (0, 0))
                 pygame.mixer.music.stop()
                 pygame.mixer.music.load('monsterkill.mp3')
                 pygame.mixer.music.play()

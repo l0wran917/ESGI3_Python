@@ -2,6 +2,7 @@ import pygame
 from pygame.locals import *
 from pygame.math import Vector2
 
+
 class Player:
     jumpHeight = 50
 
@@ -56,8 +57,8 @@ class Player:
                     self.jumpValue = 0
                     self.is_jumping = False
 
-            if self.position.y + self.position.height > plateform.position.y and \
-                            self.position.y < plateform.position.y + plateform.size.y:
+            if self.position.y + self.position.height > plateform.position.y and self.position.y < plateform.position.y\
+                    + plateform.size.y:
                 if self.position.x + self.position.width + self.movement.x > plateform.position.x and \
                                         self.position.x + self.movement.x < plateform.position.x + plateform.size.x:
                     self.movement.x = 0
@@ -66,7 +67,7 @@ class Player:
         self.jumpValue = height
         self.is_jumping = True
 
-    def applyMove(self):
+    def apply_move(self):
         if self.position.y > 420:
             self.kill()
 

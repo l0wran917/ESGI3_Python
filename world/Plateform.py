@@ -2,6 +2,7 @@ import pygame
 from pygame.math import Vector2
 from random import randint
 
+
 class Plateform:
     def __init__(self, x, y):
         self.background = pygame.image.load("world/assets/plateform_ground.png").convert_alpha()
@@ -43,8 +44,8 @@ class Plateform:
         random = randint(0, 20)
         if random > 17:
             self.plateform.append(Plateform(75 * i, 500))
-            randomDobleBlank = i + randint(0, 1)
-            self.plateform.append(Plateform((75 * randomDobleBlank), 500))
+            random_doble_blank = i + randint(0, 1)
+            self.plateform.append(Plateform((75 * random_doble_blank), 500))
         else:
             self.plateform.append(Plateform(75 * i, 360))
 
@@ -53,5 +54,5 @@ class Plateform:
         if random > 17:
             self.plateform.append(Plateform(32 * i, 230))
         if random > 19:
-            randomDoblePlateform = i + randint(1, 3)
-            self.plateform.append(Plateform(32 * randomDoblePlateform, 100))
+            random_doble_plateform = i + randint(1, 3)
+            self.plateform.append(Plateform(32 * random_doble_plateform, 100))
