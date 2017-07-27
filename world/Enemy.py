@@ -53,6 +53,8 @@ class Enemy:
 
     def kill(self):
         self.dead = True
+        kill = pygame.mixer.Sound("jump.mp3")
+        kill.play()
 
     def create(self, quantity=10):
         for i in range(0, quantity):
