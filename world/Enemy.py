@@ -24,6 +24,9 @@ class Enemy:
         self.countmove = 0
         self.direction = 'right'
 
+        self.sound = pygame.mixer.Sound("no.wav")
+        self.sound.set_volume(0.5)
+
         self.dead = False
 
     def move(self):
@@ -52,9 +55,8 @@ class Enemy:
             window.blit(self.background, self.position)
 
     def kill(self):
+        self.sound.play()
         self.dead = True
-        kill = pygame.mixer.Sound("jump.mp3")
-        kill.play()
 
     def create(self, quantity=10):
         for i in range(0, quantity):

@@ -23,6 +23,9 @@ class Player:
         self.jumpValue = 0
         self.is_jumping = False
 
+        self.sound = pygame.mixer.Sound("jump.wav")
+        self.sound.set_volume(0.5)
+
         self.dead = False
 
     def display(self, window):
@@ -62,6 +65,7 @@ class Player:
                     self.movement.x = 0
 
     def jump(self, height):
+        self.sound.play()
         self.jumpValue = height
         self.is_jumping = True
 
