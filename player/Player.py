@@ -8,12 +8,10 @@ class Player:
 
     def __init__(self):
         self.image = pygame.image.load("player/assets/perso.png").convert_alpha()
-        self.image = pygame.transform.scale(self.image, (50, 43))
-        self.image = pygame.transform.flip(self.image, 90, 0)
+        self.image = pygame.transform.scale(self.image, (60, 60))
 
         self.imageJump = pygame.image.load("player/assets/jump.png").convert_alpha()
-        self.imageJump = pygame.transform.scale(self.imageJump, (50, 43))
-        self.imageJump = pygame.transform.flip(self.imageJump, 90, 0)
+        self.imageJump = pygame.transform.scale(self.imageJump, (60, 60))
 
         self.position = self.image.get_rect()
         self.position.x = 150
@@ -24,6 +22,9 @@ class Player:
         self.movement = Vector2()
         self.jumpValue = 0
         self.is_jumping = False
+
+        self.sound = pygame.mixer.Sound("jump.wav")
+        self.sound.set_volume(0.5)
 
         self.dead = False
 
@@ -64,6 +65,7 @@ class Player:
                     self.movement.x = 0
 
     def jump(self, height):
+        self.sound.play()
         self.jumpValue = height
         self.is_jumping = True
 

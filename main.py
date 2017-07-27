@@ -4,8 +4,8 @@ from world.World import World
 from player.Player import Player
 from hud.Hud import Hud
 
-
 def main():
+    pygame.mixer.pre_init(44100, -16, 1, 512)
     pygame.init()
 
     window = pygame.display.set_mode((800, 445))
@@ -14,8 +14,8 @@ def main():
 
     hud = Hud()
 
-    pygame.mixer.pre_init(44100, -16, 2, 2048)
     pygame.mixer.music.load('bestsongever.mp3')
+    pygame.mixer.music.set_volume(0.4)
     pygame.mixer.music.play(-1)
 
     background_dead = pygame.image.load("world/assets/dead_screen.png").convert_alpha()
@@ -40,6 +40,7 @@ def main():
             world.display(window)
             player.display(window)
             hud.display(window)
+
         else:
             if not waiting_input:
                 window.blit(background_dead, (0, 0))

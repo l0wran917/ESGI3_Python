@@ -14,7 +14,7 @@ class World:
         self.plateforms = self.plateform.create()
 
         self.enemie = Enemy()
-        self.enemies = self.enemie.create(20)
+        self.enemies = self.enemie.create(70)
 
     def display(self, window):
         position = self.position
